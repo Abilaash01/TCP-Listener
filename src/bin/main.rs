@@ -2,6 +2,8 @@ use std::{fs, io::{Read, Write}, net::{TcpListener, TcpStream}, thread, time::Du
 
 use simple_tcp_listener::ThreadPool;
 
+// Handles incoming client requests.
+// Reads the request from the stream and sends a response based on the request.
 fn handle_client(mut stream: TcpStream) {
     // Buffer to store request
     let mut buffer = [0; 1028];
