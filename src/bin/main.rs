@@ -52,6 +52,6 @@ fn main() {
             handle_client(stream);
         });
 
-        print!("Server is shutting down!");
+        println!("Server is shutting down!");
     }
 }

@@ -64,7 +64,7 @@ impl Drop for ThreadPool {
     /// 
     /// The 'drop' function will panic when the threadpool is dropped and there are still active workers
     fn drop(&mut self) {
-        print!("Sending terminate message to all workers.");
+        println!("Sending terminate message to all workers.");
 
         // Send terminate message to all workers
         for _ in &mut self.workers {
@@ -112,7 +112,7 @@ impl Worker {
             // Execute job or terminate depending on message
             match message {
                 Message::NewJob(job) => {
-                    print!("Worker {} got a job; executing.", id);
+                    println!("Worker {} got a job; executing.", id);
                     job();
                 }
                 Message::Terminate => {
