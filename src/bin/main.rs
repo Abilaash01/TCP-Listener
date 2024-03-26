@@ -44,12 +44,14 @@ fn main() {
     let pool = ThreadPool::new(4);
 
     // Listen for all incoming clients coming into the server stream
-    for stream in listener.incoming() {
+    for stream in listener.incoming().take(2) {
         let stream = stream.unwrap();
 
         pool.execute(|| {
             println!("Connection established!");
             handle_client(stream);
         });
+
+        print!("Server is shutting down!");
     }
 }
